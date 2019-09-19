@@ -1,0 +1,87 @@
+<script>
+import wepy from '@wepy/core'
+import global from '@/common/global'
+
+wepy.component({
+  props: {
+    background: String
+  },
+  data: {
+    canBack: false,
+    statusBarHeight: 0,
+    navBarHeight: 0
+  },
+  methods: {
+    goBack() {
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+  },
+
+  created() {
+    this.statusBarHeight = global.systemInfo.statusBarHeight
+    this.navBarHeight = global.systemInfo.navBarHeight
+    if (getCurrentPages().length > 0) {
+      this.canBack = true
+    }
+  }
+})
+</script>
+
+<template>
+  <view class="wrapper" :style="{background:background}">
+    <view class="status-bar" :style="{height:statusBarHeight+'px'}"></view>
+    <view class="nav-bar" :style="{height:navBarHeight+'px'}">
+      <cover-view class="back" :style="{height:navBarHeight+'px'}" v-if="canBack" @click="goBack">
+        <cover-image class="arrow" src="/images/icons/back.png"/>
+      </cover-view>
+      <view class="content">
+        <slot></slot>
+      </view>
+    </view>
+  </view>
+  <view class="placeholder" :style="{height:(statusBarHeight+navBarHeight)+'px'}"></view>
+</template>
+
+<style lang="less">
+nav-bar {
+  width: 100%;
+}
+.placeholder {
+  width: 100%;
+}
+.wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+.status-bar {
+  width: 100%;
+}
+.nav-bar {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .back {
+    width: 40px;
+    position: fixed;
+    z-index: 101;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+
+    .arrow {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .content {
+    flex: 1;
+    text-align: center;
+  }
+}
+</style>

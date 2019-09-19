@@ -1,0 +1,75 @@
+<script>
+import wepy from '@wepy/core'
+import vuex from '@wepy/x'
+import global from '@/common/global'
+
+wepy.use(vuex)
+
+wepy.app({
+  hooks: {
+    'before-setData': function(dirty) {
+      return dirty
+    }
+  },
+  onLaunch() {
+    wx.getSystemInfo({
+      success: e => {
+        const custom = wx.getMenuButtonBoundingClientRect()
+        e.navBarHeight =
+          custom.top - e.statusBarHeight + custom.bottom - e.statusBarHeight
+        global.systemInfo = e
+      }
+    })
+  }
+})
+</script>
+
+<style lang="less">
+page {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.content {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+</style>
+
+<config>
+{
+  "pages": [
+    "pages/home",
+    "pages/my",
+    "pages/settings"
+  ],
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/home"
+      },
+      {
+        "pagePath": "pages/my"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {}
+}
+</config>

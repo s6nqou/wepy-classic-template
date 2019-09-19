@@ -1,0 +1,38 @@
+{
+  "name": "wepy-classic-template",
+  "version": "0.0.2",
+  "description": "A wepy2.0.x classic template with custom nav-bar and tab-bar.",
+  "main": "weapp/app.js",
+  "scripts": {
+    "dev": "./node_modules/.bin/wepy build --watch",
+    "build": "cross-env NODE_ENV=production ./node_modules/.bin/wepy build --no-cache",
+    "clean": "rm -rf weapp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "T-Mach",
+  "license": "MIT",
+  "dependencies": {
+    "@wepy/core": "^2.0.0-alpha.11",
+    "@wepy/x": "^2.0.2"
+  },
+  "devDependencies": {
+    "@wepy/cli": "^2.0.0-alpha.19",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@wepy/babel-plugin-import-regenerator": "0.0.2",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^5.2.1",
+    "eslint": "^6.3.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "wepy-eslint": "^1.5.4",
+    "less": "^3.10.3",
+    "@wepy/compiler-babel": "^2.0.3",
+    "@wepy/compiler-less": "^2.0.6"
+  }
+}

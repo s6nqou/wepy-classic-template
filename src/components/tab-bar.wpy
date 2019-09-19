@@ -1,0 +1,90 @@
+<script>
+import wepy from '@wepy/core'
+import store from '@/store'
+import { mapState, mapActions } from '@wepy/x'
+
+wepy.component({
+  store,
+  data: {
+    color: '#8a8a8a',
+    selectedColor: '#2c2c2c',
+    list: [
+      {
+        pagePath: '/pages/home',
+        text: '主页',
+        iconPath: '/images/icons/home.png',
+        selectedIconPath: '/images/icons/home_active.png'
+      },
+      {
+        pagePath: '/pages/my',
+        text: '我的',
+        iconPath: '/images/icons/my.png',
+        selectedIconPath: '/images/icons/my_active.png'
+      }
+    ]
+  },
+  methods: {
+    ...mapActions('tab', ['changeTabIndex']),
+    switchTab(index) {
+      wx.switchTab({
+        url: this.list[index].pagePath
+      })
+      this.changeTabIndex(index)
+    }
+  },
+  computed: mapState('tab', {
+    selected: 'tabIndex'
+  })
+})
+</script>
+
+<template>
+  <view class="tab-bar-placeholder"></view>
+  <cover-view class="tab-bar">
+    <cover-view class="border"></cover-view>
+    <cover-view class="item" v-for="(item,index) in list" @click.stop="switchTab(index)">
+      <cover-image class="icon" src="{{selected===index?item.selectedIconPath:item.iconPath}}"/>
+      <cover-view class="text" style="color:{{selected===index?selectedColor:color}};">{{item.text}}</cover-view>
+    </cover-view>
+  </cover-view>
+</template>
+
+<style lang="less">
+.tab-bar-placeholder {
+  width: 100%;
+  height: 48px;
+}
+.tab-bar {
+  width: 100%;
+  height: 48px;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  background: #fafafa;
+  display: flex;
+  line-height: 0;
+
+  .border {
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    transform: scaleY(0.5);
+    background-color: rgba(0, 0, 0, 0.33);
+  }
+  .item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+      width: 27px;
+      height: 27px;
+    }
+    .text {
+      font-size: 10px;
+    }
+  }
+}
+</style>
