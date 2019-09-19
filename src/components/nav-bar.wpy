@@ -4,12 +4,16 @@ import global from '@/common/global'
 
 wepy.component({
   props: {
-    background: String
+    background: {
+      type: String,
+      default: 'white'
+    },
+    shadow: Boolean
   },
   data: {
     canBack: false,
-    statusBarHeight: 0,
-    navBarHeight: 0
+    statusBarHeight: global.systemInfo.statusBarHeight,
+    navBarHeight: global.systemInfo.navBarHeight
   },
   methods: {
     goBack() {
@@ -18,10 +22,7 @@ wepy.component({
       })
     }
   },
-
   created() {
-    this.statusBarHeight = global.systemInfo.statusBarHeight
-    this.navBarHeight = global.systemInfo.navBarHeight
     if (getCurrentPages().length > 0) {
       this.canBack = true
     }
@@ -30,32 +31,34 @@ wepy.component({
 </script>
 
 <template>
-  <view class="wrapper" :style="{background:background}">
-    <view class="status-bar" :style="{height:statusBarHeight+'px'}"></view>
-    <view class="nav-bar" :style="{height:navBarHeight+'px'}">
-      <cover-view class="back" :style="{height:navBarHeight+'px'}" v-if="canBack" @click="goBack">
-        <cover-image class="arrow" src="/images/icons/back.png"/>
+  <view class="wrapper" :style="{ background: background, boxShadow: (shadow ? '0 1rpx 6rpx rgba(0,0,0,0.1)' : '') }">
+    <view class="status-bar" :style="{ height: statusBarHeight + 'px' }"></view>
+    <view class="nav-bar" :style="{ height: navBarHeight + 'px' }">
+      <cover-view class="back" :style="{ height: navBarHeight + 'px' }" v-if="canBack" @click="goBack">
+        <cover-image class="arrow" src="/images/icons/back.png" />
       </cover-view>
       <view class="content">
         <slot></slot>
       </view>
     </view>
   </view>
-  <view class="placeholder" :style="{height:(statusBarHeight+navBarHeight)+'px'}"></view>
+  <view class="nav-bar-placeholder" :style="{ height: (statusBarHeight + navBarHeight) + 'px' }"></view>
 </template>
 
 <style lang="less">
 nav-bar {
   width: 100%;
 }
-.placeholder {
+.nav-bar-placeholder {
   width: 100%;
+  background: #eeeeee;
 }
 .wrapper {
   width: 100%;
   position: fixed;
   top: 0;
   z-index: 100;
+  background: white;
 }
 .status-bar {
   width: 100%;

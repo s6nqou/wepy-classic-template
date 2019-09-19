@@ -2,32 +2,42 @@
 import wepy from '@wepy/core'
 
 wepy.page({
-  options: {},
   data: {
-    navBarColor: '',
-    colors: ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'white', 'black']
+    colors: [
+      'red',
+      'orange',
+      'yellow',
+      'green',
+      'blue',
+      'purple',
+      'white',
+      'black'
+    ],
+    navBar: {
+      background: '',
+      color: '',
+      shadow: false
+    }
   },
-  methods: {},
-  computed: {},
-  watch: {},
-  events: {},
-  hooks: {},
-  mixins: [],
-  created() {},
+  methods: {
+    switchShadow(e) {
+      this.navBar.shadow = e.$wx.detail.value
+    }
+  },
   onLoad() {}
 })
 </script>
 
-<wxs module="" lang="babel">
-</wxs>
-
 <template>
   <view class="container">
-    <nav-bar :background="navBarColor">设置</nav-bar>
+    <nav-bar :background="navBar.background" :color="navBar.color" :shadow="navBar.shadow">设置</nav-bar>
     <view class="content">
-      点击改变nav-bar颜色
+      <view style="font-size: 50rpx; margin: 30rpx 0;">设置nav-bar</view>
       <view class="color-rule">
-        <view class="item" v-for="(item,index) in colors" style="background-color: {{item}};" @click="navBarColor=item"></view>
+        背景颜色：<view class="item" v-for="(item, index) in colors" style="background-color: {{item}};" @click="navBar.background = item"></view>
+      </view>
+      <view>
+        阴影：<switch checked="{{navBar.shadow}}" @change="switchShadow" />
       </view>
     </view>
   </view>
@@ -35,7 +45,11 @@ wepy.page({
 
 <style lang="less">
 .content {
-  padding-top: 100rpx;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+.content > view {
+  padding: 6rpx 0;
 }
 .color-rule {
   width: 100%;
@@ -50,8 +64,6 @@ wepy.page({
 
 <config>
 {
-  "usingComponents": {
-    "nav-bar": "~@/components/nav-bar"
-  }
+  "usingComponents": {}
 }
 </config>
