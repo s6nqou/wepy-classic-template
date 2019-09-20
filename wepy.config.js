@@ -6,7 +6,7 @@ module.exports = {
   eslint: true,
   cliLogs: !prod,
   build: {},
-  static: ['src/images', 'src/custom-tab-bar'],
+  static: 'src/images',
   resolve: {
     alias: {
       '@': path.join(__dirname, 'src')

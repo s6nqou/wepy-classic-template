@@ -4,37 +4,106 @@ import wepy from '@wepy/core'
 wepy.page({
   data: {},
   methods: {},
-  onLoad() {}
+  onLoad() {},
+  onShow() {
+    this.$wx.getTabBar().$wepy.selected = 0
+  }
 })
 </script>
 
 <template>
   <view class="container">
-    <nav-bar background="purple">小程序</nav-bar>
+    <nav-bar shadow="true">小程序</nav-bar>
     <view class="content">
       <view class="scroll">
-        可以滚动
-        <br>⬇️
+        <text>
+          可以滚动
+          ⬇️
+
+          
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+          🍎
+          🍋
+
+
+        </text>
+        <small>其实是🍊</small>
       </view>
     </view>
-    <tab-bar></tab-bar>
+    <view class="tab-bar-placeholder"></view>
   </view>
 </template>
 
 <style lang="less">
 .scroll {
   width: 100%;
-  height: 200%;
-  font-size: 50rpx;
   text-align: center;
 }
 </style>
 
 <config>
 {
-  "usingComponents": {
-    "nav-bar": "~@/components/nav-bar",
-    "tab-bar": "~@/components/tab-bar"
-  }
+  "usingComponents": {}
 }
 </config>

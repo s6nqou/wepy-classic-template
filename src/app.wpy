@@ -11,8 +11,8 @@ wepy.app({
       return dirty
     }
   },
-  onLaunch() {
-    wx.getSystemInfo({
+  async onLaunch() {
+    await wx.getSystemInfo({
       success: e => {
         const custom = wx.getMenuButtonBoundingClientRect()
         e.navBarHeight =
@@ -43,6 +43,12 @@ page {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
+.tab-bar-placeholder {
+  width: 100%;
+  height: 48px;
+  flex-shrink: 0;
+  background: #eeeeee;
+}
 </style>
 
 <config>
@@ -64,12 +70,15 @@ page {
     ]
   },
   "window": {
+    "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "nav-bar": "~@/components/nav-bar"
+  }
 }
 </config>
