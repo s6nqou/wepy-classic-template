@@ -6,7 +6,9 @@ wepy.page({
   methods: {},
   onLoad() {},
   onShow() {
-    this.$wx.getTabBar().$wepy.selected = 1
+    if (typeof this.$wx.getTabBar === 'function' && this.$wx.getTabBar()) {
+      this.$wx.getTabBar().$wepy.selected = 1
+    }
   }
 })
 </script>

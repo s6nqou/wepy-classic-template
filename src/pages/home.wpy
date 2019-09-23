@@ -6,7 +6,9 @@ wepy.page({
   methods: {},
   onLoad() {},
   onShow() {
-    this.$wx.getTabBar().$wepy.selected = 0
+    if (typeof this.$wx.getTabBar === 'function' && this.$wx.getTabBar()) {
+      this.$wx.getTabBar().$wepy.selected = 0
+    }
   }
 })
 </script>
@@ -20,7 +22,6 @@ wepy.page({
           可以滚动
           ⬇️
 
-          
           🍎
           🍋
           🍎
@@ -85,7 +86,6 @@ wepy.page({
           🍋
           🍎
           🍋
-
 
         </text>
         <small>其实是🍊</small>
