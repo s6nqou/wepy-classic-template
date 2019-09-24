@@ -1,5 +1,8 @@
-let global = {
+const globalData = {
+
+}
+const globalMethods = {
 
 }
 
-export default global
+export { globalData, globalMethods }

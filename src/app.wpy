@@ -1,26 +1,12 @@
 <script>
 import wepy from '@wepy/core'
 import vuex from '@wepy/x'
-import global from '@/common/global'
+import { globalData, globalMethods } from '@/common/global'
 
 wepy.use(vuex)
 
 wepy.app({
-  hooks: {
-    'before-setData': function(dirty) {
-      return dirty
-    }
-  },
-  async onLaunch() {
-    await wx.getSystemInfo({
-      success: e => {
-        const custom = wx.getMenuButtonBoundingClientRect()
-        e.navBarHeight =
-          custom.top - e.statusBarHeight + custom.bottom - e.statusBarHeight
-        global.systemInfo = e
-      }
-    })
-  }
+  onLaunch() {}
 })
 </script>
 

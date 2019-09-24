@@ -1,6 +1,5 @@
 <script>
 import wepy from '@wepy/core'
-import global from '@/common/global'
 
 wepy.component({
   props: {
@@ -11,9 +10,17 @@ wepy.component({
     shadow: Boolean
   },
   data: {
-    canBack: false,
-    statusBarHeight: global.systemInfo.statusBarHeight,
-    navBarHeight: global.systemInfo.navBarHeight
+    canBack: false
+  },
+  computed: {
+    statusBarHeight: function() {
+      return wx.getSystemInfoSync().statusBarHeight
+    },
+    navBarHeight: function() {
+      const statusBarHeight = wx.getSystemInfoSync().statusBarHeight
+      const custom = wx.getMenuButtonBoundingClientRect()
+      return custom.top - statusBarHeight + custom.bottom - statusBarHeight
+    }
   },
   methods: {
     goBack() {
@@ -22,8 +29,8 @@ wepy.component({
       })
     }
   },
-  created() {
-    if (getCurrentPages().length > 0) {
+  ready() {
+    if (getCurrentPages().length > 1) {
       this.canBack = true
     }
   }
