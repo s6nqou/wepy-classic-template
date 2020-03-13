@@ -12,28 +12,28 @@
   "author": "T-Mach",
   "license": "MIT",
   "dependencies": {
-    "@wepy/core": "^2.0.0-alpha.11",
-    "@wepy/x": "^2.0.2",
-    "regenerator-runtime": "^0.13.3"
+    "@wepy/core": "^2.0.0-alpha.14",
+    "@wepy/x": "^2.0.3",
+    "regenerator-runtime": "^0.13.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "@wepy/babel-plugin-import-regenerator": "0.0.2",
-    "@wepy/cli": "^2.0.0-alpha.20",
-    "@wepy/compiler-babel": "^2.0.3",
-    "@wepy/compiler-less": "^2.0.6",
-    "babel-eslint": "^10.0.3",
-    "cross-env": "^6.0.0",
-    "eslint": "^6.4.0",
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@wepy/babel-plugin-import-regenerator": "0.0.4",
+    "@wepy/cli": "^2.0.0-alpha.23",
+    "@wepy/compiler-babel": "^2.0.4",
+    "@wepy/compiler-less": "^2.0.7",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-plugin-html": "^6.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "less": "^3.10.3",
+    "less": "^3.11.1",
     "wepy-eslint": "^1.5.4"
   }
 }
